@@ -4,17 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="owners">
-    <jsp:attribute name="customScript">
-        <script>
-            $(function () {
-                $("#birthDate").datepicker({dateFormat: 'yy/mm/dd'});
-            });
-        </script>
-    </jsp:attribute>
+<petclinic:layout pageName="recoveryrooms">
     <jsp:body>
         <h2>
-            Recovery Room
+            <c:if test="${recoveryRoom['new']}"> New </c:if> Recovery
         </h2>
         <form:form modelAttribute="recoveryRoom"
                    class="form-horizontal">
@@ -33,5 +26,7 @@
                 </div>
             </div>
         </form:form>
+        <c:if test="${!recoveryRoom['new']}">
+        </c:if>
     </jsp:body>
 </petclinic:layout>
